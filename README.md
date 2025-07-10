@@ -1,7 +1,7 @@
 # Cardiovascular-Ai-Aws
 
 
-Proyecto desarrollado durante el programa AWS Educate por un grupo de estudiantes de informática. El objetivo es crear una aplicación web basada en inteligencia artificial para el análisis automático de electrocardiogramas (ECG), simulando los datos que capturan los smartwatches, con capacidad de diagnóstico e interpretación médica.
+Proyecto desarrollado durante el programa AWS Educate por un grupo de estudiantes del Grado en Ingeniería Informática y Doble Grado en Ingeniería Informática – Matemáticas. El objetivo es crear una aplicación web basada en inteligencia artificial para el análisis automático de electrocardiogramas (ECG), simulando los datos que capturan los smartwatches, con capacidad de diagnóstico e interpretación médica.
 
 ---
 
