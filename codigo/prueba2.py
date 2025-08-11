@@ -8,12 +8,15 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Configuración fija
-PTBXL_ROOT = "/home/jaime/Desktop/github/Cardiovascular-Ai-Aws/codigo/physionet.org/files/ptb-xl/1.0.3"
+PTBXL_ROOT = "C:/Users/diego/OneDrive/Documentos/GitHub/Cardiovascular-Ai-Aws/ptb-xl-1.0.3"
 CSV_META = os.path.join(PTBXL_ROOT, "ptbxl_database.csv")
 OUTPUT_DIR = "output"
 
 # Crear carpeta de salida si no existe
 os.makedirs(OUTPUT_DIR, exist_ok=True)
+
+
+
 
 # 1) Cargar el CSV y quedarse solo con filename_lr, filename_hr, scp_codes
 df = pd.read_csv(
@@ -21,6 +24,46 @@ df = pd.read_csv(
     index_col="ecg_id",
     usecols=["ecg_id", "filename_lr", "filename_hr", "scp_codes"],
 )
+
+
+# 1.1)  Lista de códigos detectables con derivación I (hay que balancear los nomales y SR, hay muchos)
+CODES_I = [
+        # Ritmos
+    "SR","STACH","SBRAD","SARRH","AFIB","AFLT","SVTAC","PSVT","SVARR",
+    # Ectopia y patrones
+    "PAC","PVC","PRC(S)","BIGU","TRIGU",
+    # Conducción AV / PR
+    "1AVB","2AVB","3AVB","LPR",
+    # Morfología QRS/T global
+    "ABQRS","QWAVE","INVT","LOWT","TAB_","NT_","NDT",
+    # ST-T global inespecífico / fisiopatológico
+    "STE_","STD_","ISC_","ANEUR","DIG","EL",
+    # Voltajes globales
+    "HVOLT","LVOLT","VCLVH",
+    # (opcional en dataset) normal
+    "NORM"
+]
+
+
+def has_code_I_principal(scp_codes_raw):
+    try:
+        scp = ast.literal_eval(scp_codes_raw) if isinstance(scp_codes_raw, str) else {}
+        # Convertir a float y descartar valores no numéricos
+        scp = {k: float(v) for k, v in scp.items() if v is not None}
+        if not scp:
+            return False
+
+        max_val = max(scp.values())
+        top = [k for k, v in scp.items() if v == max_val]
+
+        # Solo aceptar si hay un único principal y está en CODES_I
+        return all(k in CODES_I for k in top)
+    except Exception:
+        return False
+
+
+df = df[df["scp_codes"].apply(has_code_I_principal)]
+
 
 # 2) Filtrar filas con filename_lr que empiecen por records100/00000/
 mask = df["filename_lr"].astype(str).str.startswith("records100/00000/")
@@ -81,18 +124,25 @@ for ecg_id, row in df_sub.iterrows():
 
     # Graficar
     plt.figure(figsize=(10, 3))
-    plt.plot(t, first_lead)
-    plt.xlabel("Tiempo (s)")
-    plt.ylabel(lead_name)
-    plt.title(title)
-    plt.grid(True)
-    plt.tight_layout()
+    plt.plot(t, first_lead, color='black')
+    plt.axis('off')      # Quita ejes
+    plt.grid(False)      # Quita grid
+    plt.tight_layout(pad=0)
+    # Añadir título con la etiqueta
+    plt.title(codes_str, fontsize=8, color='red', loc='left')
+
 
     # Guardar
     safe_name = ecg_str.replace("/", "_")
     out_path = os.path.join(OUTPUT_DIR, f"{safe_name}.png")
     try:
-        plt.savefig(out_path, dpi=150)
+        plt.savefig(out_path, dpi=150, bbox_inches='tight', pad_inches=0)
+        plt.close()
+        # Convertir a binario
+        from PIL import Image
+        img = Image.open(out_path).convert('L')
+        img_bin = img.point(lambda p: 255 if p > 128 else 0, mode='1')
+        img_bin.save(out_path)  # Sobrescribe o cambia el nombre si prefieres
         print(f"[{ecg_str}] Guardado en {out_path}")
     except Exception as e:
         print(f"[{ecg_str}] Error guardando imagen: {e}")
