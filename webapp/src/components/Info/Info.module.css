@@ -4,6 +4,13 @@
   color: #000000;
 }
 
+.infoSection .container {
+  width: 100%;
+  max-width: 1200px; /* limita ancho en escritorio */
+  margin: 0 auto;    /* centra horizontalmente */
+}
+
+
 .title {
   text-align: center;
   font-size: 2rem;

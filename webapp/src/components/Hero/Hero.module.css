@@ -10,6 +10,17 @@
    
 }
 
+.hero .container {
+  width: 100%;
+  max-width: 1200px; 
+  margin: 0 auto;    
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
 .content {
   flex: 1 1 400px;
    min-width: 280px;
