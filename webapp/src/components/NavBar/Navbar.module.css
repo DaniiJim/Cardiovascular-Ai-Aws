@@ -3,13 +3,13 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background-color: #282c34;
+  background-color: #ffffffff;
   margin: 0;
   
 }
 
 .logo {
-  color: #61dafb;
+  color: #fd0000ff;
   font-size: 1.5rem;
 }
 
@@ -23,10 +23,10 @@
 
 .links a {
   text-decoration: none;
-  color: white;
+  color: black;
   transition: color 0.2s;
 }
 
 .links a:hover {
-  color: #61dafb;
+  color: #fb6161ff;
 }

@@ -1,6 +1,6 @@
 .footer {
-  background-color: #282c34;
-  color: #fff;
+  background-color: #ffffffff;
+  color: black;
   padding: 1.5rem 2rem;
   display: flex;
   flex-direction: column;
@@ -19,11 +19,11 @@
 }
 
 .social a {
-  color: #61dafb;
+  color: black;
   font-weight: bold;
   transition: color 0.2s;
 }
 
 .social a:hover {
-  color: #21a1f1;
+  color: #fb6161ff;
 }

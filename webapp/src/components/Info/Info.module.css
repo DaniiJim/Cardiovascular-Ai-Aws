@@ -1,0 +1,60 @@
+.infoSection {
+  padding: 4rem 2rem;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 3rem;
+}
+
+.card {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+  gap: 2rem;
+}
+
+.card:nth-child(even) .text {
+  order: 2; /* alterna la posición del texto */
+}
+
+.card:nth-child(even) .image {
+  order: 1;
+}
+
+.text {
+  flex: 1 1 300px;
+   min-width: 280px;
+  max-width: 600px;
+}
+
+.text h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.text p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.image {
+  flex: 1 1 300px;
+   min-width: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}

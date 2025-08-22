@@ -13,6 +13,11 @@ html, body {
                Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   background-color: #f9f9f9;
   color: #333;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  
 }
 
 /* Quitar estilos por defecto en listas */
