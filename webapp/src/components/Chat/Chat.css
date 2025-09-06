@@ -1,50 +1,18 @@
-.chat-container {
-  display: flex;
-  height: 100%;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  overflow: hidden;
-}
+.chat { display: grid; grid-template-columns: 180px 1fr; gap: 16px; min-height: 460px; }
+.doc { background: linear-gradient(180deg, #f9fafb, #eef2f7); border: 1px solid #e5e7eb; border-radius: 12px; display: grid; place-items: center; }
 
-.doctor-image-container {
-  flex: 0 0 150px; /* Ancho fijo para la imagen del doctor */
-  background-color: #f0f0f0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-.chat-interface {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
+.thread { display: grid; grid-template-rows: 1fr auto; border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; }
+.msgs { padding: 16px; display: grid; gap: 10px; align-content: start; background: #fbfbfb; }
+.msg { display: flex; }
+.msg.user { justify-content: flex-end; }
+.bubble { max-width: 70%; padding: 10px 12px; border-radius: 14px; font-size: 14px; line-height: 1.35; background: #ffffff; border: 1px solid #e5e7eb; box-shadow: 0 8px 18px -14px rgba(0,0,0,.4); }
+.msg.assistant .bubble { background: #f6f7f9; }
+.msg.user .bubble { background: var(--accent); border-color: #f59e0b55; color: #111; font-weight: 600; }
 
-.chat-messages {
-  flex: 1;
-  padding: 20px;
-  overflow-y: auto;
-}
 
-.chat-input {
-  display: flex;
-  padding: 10px;
-  border-top: 1px solid #ccc;
-}
-
-.chat-input input {
-  flex: 1;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.chat-input button {
-  padding: 10px 20px;
-  margin-left: 10px;
-  border: none;
-  background-color: #ff69b4; /* Rosa principal */
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
-}
+.composer { display: grid; grid-template-columns: 1fr auto; gap: 8px; padding: 10px; border-top: 1px solid #e5e7eb; background: #fff; }
+.composer input { width: 100%; border: 1px solid #d1d5db; border-radius: 10px; padding: 12px 12px; font-size: 14px; outline: none; }
+.composer input:focus { border-color: #9ca3af; box-shadow: 0 0 0 4px #0000000d; }
+.composer button { background: var(--accent); border: none; font-weight: 800; padding: 0 18px; border-radius: 10px; cursor: pointer; }
+.composer button:hover { filter: brightness(0.95); }

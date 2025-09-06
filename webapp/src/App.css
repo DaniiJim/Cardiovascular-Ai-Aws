@@ -1,25 +1,41 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #f1f1f1;
+:root {
+/* Amazon-like palette */
+--nav-bg: #131921; /* top */
+--nav-sub: #232f3e; /* sub */
+--accent: #febd69; /* amazon yellow */
+--accent-2: #ffa41c; /* hover */
+--bg: #f3f3f3;
+--card-bg: #ffffff;
+--text: #111;
+--muted: #6b7280;
+--ring: #232f3e22;
 }
 
-.App {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-}
 
-.main-content {
-  display: flex;
-  flex: 1;
-}
+* { box-sizing: border-box; }
+html, body, #root, .App { height: 100%; }
+body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; background: var(--bg); color: var(--text); }
 
-.main-content > div {
-  flex: 1;
-  padding: 20px;
-}
+
+.App { display: flex; flex-direction: column; min-height: 100%; }
+
+
+.main { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; width: min(1200px, 92vw); margin: 24px auto; }
+
+
+@media (max-width: 960px) { .main { grid-template-columns: 1fr; } }
+
+
+.left-pane, .right-pane { min-width: 0; }
+
+
+.card { background: var(--card-bg); border-radius: 16px; border: 1px solid #e5e7eb; box-shadow: 0 10px 20px -10px rgba(0,0,0,.15); }
+.panel { padding: 20px; }
+.panel-title { margin: 0; font-size: 18px; font-weight: 700; letter-spacing: .2px; }
+.panel-sub { margin: 6px 0 16px; color: var(--muted); font-size: 13px; }
+.panel-title-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.badge { background: #f59e0b22; color: #b45309; font-weight: 700; font-size: 11px; text-transform: uppercase; padding: 4px 8px; border-radius: 999px; border: 1px solid #f59e0b55; }
+
+
+.footer { background: #e5e7eb; border-top: 1px solid #d1d5db; }
+.footer-inner { width: min(1200px, 92vw); margin: 0 auto; padding: 16px 0; color: #4b5563; font-size: 13px; text-align: center; }

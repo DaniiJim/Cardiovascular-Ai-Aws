@@ -1,13 +1,3 @@
-.doctor-image-wrapper {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.doctor-image-wrapper img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-}
+.doctor-frame { position: relative; width: 140px; height: 140px; display: grid; place-items: center; border-radius: 12px; overflow: hidden; background: #fff; border: 1px solid #e5e7eb; box-shadow: 0 8px 22px -18px rgba(0,0,0,.45); }
+.doctor-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ai-pill { position: absolute; bottom: 8px; right: 8px; background: var(--accent); color: #111; font-weight: 900; font-size: 10px; padding: 3px 8px; border-radius: 999px; border: 1px solid #00000022; }

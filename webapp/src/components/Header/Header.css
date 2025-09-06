@@ -1,6 +1,40 @@
-.app-header {
-  background-color: #ff69b4; /* Rosa principal */
-  padding: 20px;
-  color: white;
-  text-align: center;
+.aws-amz-header { position: sticky; top: 0; z-index: 50; }
+.container { width: min(1200px, 92vw); margin: 0 auto; display: flex; align-items: center; gap: 16px; }
+
+
+.topbar { background: var(--nav-bg); color: #fff; padding: 10px 0; }
+.left { display: flex; align-items: center; gap: 10px; }
+.logo { width: 40px; height: 40px; border-radius: 8px; background: linear-gradient(135deg,var(--accent),var(--accent-2)); display: grid; place-items: center; font-size: 20px; box-shadow: 0 6px 14px -8px #000; }
+.brand-title { font-weight: 800; letter-spacing: .2px; }
+.brand-sub { font-size: 12px; opacity: .8; }
+
+
+.search { flex: 1; display: grid; grid-template-columns: 120px 1fr 48px; align-items: stretch; }
+.cat { background: #e6e6e6; border: none; outline: none; border-radius: 8px 0 0 8px; padding: 0 10px; font-weight: 600; }
+.input { border: none; outline: none; padding: 12px 12px; font-size: 14px; }
+.go { background: var(--accent); border: none; border-radius: 0 8px 8px 0; font-weight: 800; cursor: pointer; }
+.go:hover { filter: brightness(0.95); }
+
+
+.right { display: flex; align-items: center; gap: 10px; }
+.link { background: transparent; color: #fff; border: none; text-align: left; cursor: pointer; padding: 6px 8px; border-radius: 8px; }
+.link:hover { outline: 2px solid #ffffff22; }
+.tiny { display: block; font-size: 11px; opacity: .8; }
+.bold { display: block; font-weight: 700; font-size: 13px; }
+.cart { position: relative; background: transparent; border: none; font-size: 22px; cursor: pointer; color: #fff; }
+.cart-badge { position: absolute; top: -6px; right: -10px; background: var(--accent); color: #111; font-weight: 800; font-size: 11px; padding: 0 6px; border-radius: 999px; border: 2px solid var(--nav-bg); }
+
+
+.subbar { background: var(--nav-sub); color: #fff; font-size: 14px; padding: 8px 0; border-bottom: 1px solid #00000022; }
+.sub { justify-content: space-between; }
+.menu { background: transparent; color: #fff; border: none; font-weight: 700; cursor: pointer; padding: 6px 10px; border-radius: 8px; }
+.menu:hover { outline: 2px solid #ffffff22; }
+.nav { display: flex; gap: 14px; overflow-x: auto; }
+.nav-link { color: #fff; text-decoration: none; white-space: nowrap; padding: 6px 10px; border-radius: 8px; }
+.nav-link:hover { outline: 2px solid #ffffff22; }
+
+
+@media (max-width: 960px) {
+.search { grid-template-columns: 1fr 48px; }
+.cat { display: none; }
 }
