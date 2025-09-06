@@ -19,6 +19,7 @@ import torch.backends.cudnn as cudnn
 # Configuración (AJUSTA SOLO ESTAS RUTAS SI HACE FALTA)
 # =========================================================
 OUTPUT_DIR = "/content/drive/MyDrive/AWS/output"
+
 IMG_ROOT_DEFAULTS = [
     os.path.join(OUTPUT_DIR, "images_leadI"),
     os.path.join(OUTPUT_DIR, "images_leadl"),  # por si quedó con 'l'
